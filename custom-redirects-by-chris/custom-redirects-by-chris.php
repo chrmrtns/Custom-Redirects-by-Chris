@@ -18,6 +18,8 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 require plugin_dir_path(__FILE__) . 'includes/functions.php';
 require plugin_dir_path(__FILE__) . 'includes/constants.php';
 
+// Register the activation hook
+register_activation_hook(__FILE__, 'chrmrtns_custom_redirects_create_table');
 
 // Function to render existing redirects
 function chrmrtns_render_existing_redirects($redirects) {
