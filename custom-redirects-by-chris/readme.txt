@@ -43,6 +43,12 @@ You can delete a redirect from the Custom Redirects settings page or directly fr
 
 == Changelog ==
 
+= 1.2.2 =
+* Modified uninstall function
+
+= 1.2.1 =
+* Modified activation hook for database creation
+
 = 1.2 =
 * Added the ability to create and delete redirects from the post or page editor.
 

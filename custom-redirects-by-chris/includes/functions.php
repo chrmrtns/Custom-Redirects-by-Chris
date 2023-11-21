@@ -35,8 +35,10 @@ register_activation_hook(__FILE__,'chrmrtns_custom_redirects_create_table');
 function chrmrtns_custom_redirects_uninstall() {
     global $wpdb;
     $table_name = chrmrtns_get_table_name();
-    $wpdb->query("DROP TABLE IF EXISTS $table_name");
-    $wpdb->query($wpdb->prepare("DROP TABLE IF EXISTS %s", $table_name));
+
+    // Correctly prepare the SQL statement
+    $sql = "DROP TABLE IF EXISTS `$table_name`";
+    $wpdb->query($sql);
 }
 register_uninstall_hook(__FILE__,'chrmrtns_custom_redirects_uninstall');
 
