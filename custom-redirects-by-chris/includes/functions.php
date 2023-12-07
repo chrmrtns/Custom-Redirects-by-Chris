@@ -126,21 +126,27 @@ function chrmrtns_custom_page_redirect() {
     global $wpdb;
     $table_name = $wpdb->prefix . CHRMRTNS_CUSTOM_REDIRECTS_TABLE;
 
-    // Get the current requested URL
-    $current_url = $_SERVER['REQUEST_URI'];
+    // Get the current requested URL without query string
+    $current_url = strtok($_SERVER['REQUEST_URI'], '?');
+
+    // Remove trailing slash for comparison
+    $current_url = rtrim($current_url, '/');
 
     // Check if there's a matching redirect in the custom table
-    $redirect = $wpdb->get_row(
-        $wpdb->prepare("SELECT * FROM $table_name WHERE slug = %s", $current_url)
-    );
+    $redirects = $wpdb->get_results("SELECT * FROM $table_name");
 
-    if ($redirect) {
-        $target_url = esc_url($redirect->target);
+    foreach ($redirects as $redirect) {
+        // Remove trailing slash from stored slug for comparison
+        $stored_slug = rtrim($redirect->slug, '/');
 
-        // Perform a 301 redirect
-        header("HTTP/1.1 301 Moved Permanently");
-        header("Location: $target_url");
-        exit();
+        if ($current_url === $stored_slug) {
+            $target_url = esc_url($redirect->target);
+
+            // Perform a 301 redirect
+            header("HTTP/1.1 301 Moved Permanently");
+            header("Location: $target_url");
+            exit();
+        }
     }
 }
 add_action('template_redirect', 'chrmrtns_custom_page_redirect');

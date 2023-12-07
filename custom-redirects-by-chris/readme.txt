@@ -43,6 +43,9 @@ You can delete a redirect from the Custom Redirects settings page or directly fr
 
 == Changelog ==
 
+= 1.2.3 =
+* Modified redirect function - the plugin now handles redirects including backslash and query parameters and checks if link contains parmas or backslash. These are removed before redirecting.
+
 = 1.2.2 =
 * Modified uninstall function
 
