@@ -5,7 +5,7 @@ Plugin URI: https://support.christian-martens.com
 Description: Plugin for Custom Redirects
 Author: Chris Martens
 Author URI: https://chris-martens.com
-Version: 1.2.3
+Version: 1.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: custom-redirects-by-chris

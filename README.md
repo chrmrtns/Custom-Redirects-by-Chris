@@ -13,8 +13,8 @@ Contributors: chrmrtns
 Donate link: https://chris-martens.com/donate
 Tags: redirects, custom redirects, page redirects, post redirects
 Requires at least: 5.0
-Tested up to: 5.8
-Stable tag: 1.2.2
+Tested up to: 6.4.2
+Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
