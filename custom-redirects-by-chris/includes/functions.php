@@ -324,8 +324,7 @@ function chrmrtns_save_redirect($post_id) {
         return; // Exit the function after deleting
     }
 
-
-    if (isset($_POST['chrmrtns_redirect_target'])) {
+    if (isset($_POST['chrmrtns_redirect_target']) && !empty($_POST['chrmrtns_redirect_target'])) {
         $target = sanitize_text_field($_POST['chrmrtns_redirect_target']);
 
         // Check if a redirect already exists for this slug
@@ -347,6 +346,12 @@ function chrmrtns_save_redirect($post_id) {
                     'target' => $target
                 ]
             );
+        }
+    } else {
+        // If the target field is empty and a redirect exists, delete it
+        $existing_redirect = $wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE slug = %s", $slug));
+        if ($existing_redirect) {
+            $wpdb->delete($table_name, ['slug' => $slug]);
         }
     }
 }

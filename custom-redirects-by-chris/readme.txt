@@ -4,7 +4,7 @@ Donate link: https://chris-martens.com/donate
 Tags: redirects, custom redirects, page redirects, post redirects
 Requires at least: 5.0
 Tested up to: 6.4.2
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,10 @@ You can delete a redirect from the Custom Redirects settings page or directly fr
 2. Adding a redirect from the post editor.
 
 == Changelog ==
+
+= 1.2.5 =
+* Bugfixing - a redirect has been created on the first post/page creation
+* now the plugn checks if a redirect exists or not
 
 = 1.2.4 =
 * Tested up to WordPress 6.4.2
