@@ -38,7 +38,6 @@ function chrmrtnsCRD_render_existing_redirects($redirects) {
         foreach ($redirects as $redirect) {
             echo '<tr>';
             echo '<form method="post">';
-            // echo '<td><input type="text" name="slug" value="' . esc_attr($redirect->slug) . '" readonly></td>';
             echo '<td>' . esc_html($redirect->slug) . '</td>';
             echo '<td><input type="text" name="target" value="' . esc_attr($redirect->target) . '"></td>';
             echo '<input type="hidden" name="slug" value="' . esc_attr($redirect->slug) . '">'; // Hidden input for slug
