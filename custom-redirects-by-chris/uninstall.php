@@ -9,5 +9,5 @@ include_once 'includes/functions.php';
 include_once 'includes/constants.php';
 
 // Call the uninstall function
-chrmrtns_custom_redirects_uninstall();
+chrmrtnsCRD_custom_redirects_uninstall();
 

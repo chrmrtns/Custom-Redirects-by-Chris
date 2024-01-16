@@ -5,7 +5,7 @@ Plugin URI: https://support.christian-martens.com
 Description: Plugin for Custom Redirects
 Author: Chris Martens
 Author URI: https://chris-martens.com
-Version: 1.2.5
+Version: 1.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: custom-redirects-by-chris
@@ -19,42 +19,48 @@ require plugin_dir_path(__FILE__) . 'includes/functions.php';
 require plugin_dir_path(__FILE__) . 'includes/constants.php';
 
 // Register the activation hook
-register_activation_hook(__FILE__, 'chrmrtns_custom_redirects_create_table');
+register_activation_hook(__FILE__, 'chrmrtnsCRD_custom_redirects_create_table');
 
-// Function to render existing redirects
-function chrmrtns_render_existing_redirects($redirects) {
-    $output = '<h3>' . esc_html__('Existing Redirects', 'custom-redirects-by-chris') . '</h3>';
-    $output .= '<p>' . sprintf(esc_html__('To edit, just modify the redirect and hit "%s".', 'custom-redirects-by-chris'), esc_html__('Save', 'custom-redirects-by-chris')) . '</p>';    
-    $output .= '<div class="chrmrtns-custom-redirects-table">';
+// Function to render existing redirects with an Edit button
+function chrmrtnsCRD_render_existing_redirects($redirects) {
+    if (!empty($redirects)) {
+        echo '<h2>Existing Redirects</h2>';
+        echo '<table class="widefat">';
+        echo '<thead>';
+        echo '<tr>';
+        echo '<th>' . esc_html__('Page Slug', 'custom-redirects-by-chris') . '</th>';
+        echo '<th>' . esc_html__('Target URL', 'custom-redirects-by-chris') . '</th>';
+        echo '<th>' . esc_html__('Actions', 'custom-redirects-by-chris') . '</th>';
+        echo '</tr>';
+        echo '</thead>';
+        echo '<tbody>';
 
-    foreach ($redirects as $redirect) {
-        $output .= '<div class="chrmrtns-row">';
-        $output .= '<div class="chrmrtns-cell">';
-        $output .= '<form method="post" style="display:inline;">'; 
-        $output .= '<input type="hidden" name="id" value="' . intval($redirect->id) . '">';
-        $output .= '<input type="text" name="slug" value="' . esc_attr($redirect->slug) . '">';
-        $output .= '<input type="text" name="target" value="' . esc_attr($redirect->target) . '">';
-        $output .= '<input type="submit" name="edit" value="' . esc_attr__('Save', 'custom-redirects-by-chris') . '" class="button-secondary">';
-        $output .= '</form>';
-        $output .= '&nbsp;'; // Space between forms
-        $output .= '<form method="post" style="display:inline;">'; 
-        $output .= '<input type="hidden" name="id" value="' . intval($redirect->id) . '">';
-        $output .= '<input type="submit" name="delete" value="' . esc_attr__('Delete', 'custom-redirects-by-chris') . '" class="button-secondary" onclick="return confirm(\'' . esc_js(__('Are you sure you want to delete this redirect?', 'custom-redirects-by-chris')) . '\');">';
-        $output .= '</form>';
-        $output .= '</div>'; // Close chrmrtns-cell
-        $output .= '</div>'; // Close chrmrtns-row
+        foreach ($redirects as $redirect) {
+            echo '<tr>';
+            echo '<form method="post">';
+            // echo '<td><input type="text" name="slug" value="' . esc_attr($redirect->slug) . '" readonly></td>';
+            echo '<td>' . esc_html($redirect->slug) . '</td>';
+            echo '<td><input type="text" name="target" value="' . esc_attr($redirect->target) . '"></td>';
+            echo '<input type="hidden" name="slug" value="' . esc_attr($redirect->slug) . '">'; // Hidden input for slug
+            echo '<td>';
+            echo '<input type="hidden" name="id" value="' . esc_attr($redirect->id) . '">';
+            echo '<input type="submit" name="edit" class="button" value="' . esc_attr__('Update', 'custom-redirects-by-chris') . '">';
+            echo '<input type="submit" name="delete" class="button" value="' . esc_attr__('Delete', 'custom-redirects-by-chris') . '">';
+            echo '</td>';
+            echo '</form>';
+            echo '</tr>';
+        }
+
+        echo '</tbody>';
+        echo '</table>';
     }
-
-    $output .= '</div>'; // Close chrmrtns-custom-redirects-table
-
-    echo $output;
 }
 
 // Translation ready
-function chrmrtns_load_textdomain() {
+function chrmrtnsCRD_load_textdomain() {
     load_plugin_textdomain('custom-redirects-by-chris', false, basename(dirname(__FILE__)) . '/languages/');
 }
-add_action('plugins_loaded', 'chrmrtns_load_textdomain');
+add_action('plugins_loaded', 'chrmrtnsCRD_load_textdomain');
 
 
 

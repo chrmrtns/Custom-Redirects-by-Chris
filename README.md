@@ -14,7 +14,7 @@ Donate link: https://chris-martens.com/donate
 Tags: redirects, custom redirects, page redirects, post redirects
 Requires at least: 5.0
 Tested up to: 6.4.2
-Stable tag: 1.2.5
+Stable tag: 1.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,10 @@ You can delete a redirect from the Custom Redirects settings page or directly fr
 
 ### == Changelog ==
 
+= 1.2.6 =
+* Bugfixing - some more escaping to enhance security
+* Renaming prefix from chrmrtns to chrmrtnsCRD to make it more unique
+
 = 1.2.5 =
 * Bugfixing - a redirect has been created on the first post/page creation
 * now the plugn checks if a redirect exists or not
@@ -79,6 +83,9 @@ You can delete a redirect from the Custom Redirects settings page or directly fr
 * Initial release.
 
 ### == Upgrade Notice ==
+
+= 1.2.6 = 
+Renamed prefix and added some more security enhancements like proper escaping. Download from the repo and update to the latest version.
 
 = 1.2 =
 Added the ability to create and delete redirects from the post or page editor. Update for this new feature.
