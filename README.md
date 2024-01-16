@@ -14,7 +14,7 @@ Donate link: https://chris-martens.com/donate
 Tags: redirects, custom redirects, page redirects, post redirects
 Requires at least: 5.0
 Tested up to: 6.4.2
-Stable tag: 1.2.6
+Stable tag: 1.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ You can delete a redirect from the Custom Redirects settings page or directly fr
 
 ### == Changelog ==
 
+= 1.2.7 =
+* Bugfixing: some more escaping of data.
+
 = 1.2.6 =
 * Bugfixing - some more escaping to enhance security
 * Renaming prefix from chrmrtns to chrmrtnsCRD to make it more unique
@@ -83,6 +86,9 @@ You can delete a redirect from the Custom Redirects settings page or directly fr
 * Initial release.
 
 ### == Upgrade Notice ==
+
+= 1.2.7 =
+Enhanced security. Download from the repo and update to the latest version.
 
 = 1.2.6 = 
 Renamed prefix and added some more security enhancements like proper escaping. Download from the repo and update to the latest version.

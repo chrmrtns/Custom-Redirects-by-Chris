@@ -151,6 +151,9 @@ function chrmrtnsCRD_custom_page_redirect() {
     // Remove trailing slash for comparison
     $current_url = rtrim($current_url, '/');
 
+    // Sanitize and escape the URL
+    $current_url = esc_url($current_url);
+
     // Check if there's a matching redirect in the custom table
     $redirects = $wpdb->get_results("SELECT * FROM $table_name");
 
